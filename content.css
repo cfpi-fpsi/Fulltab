@@ -1,0 +1,19 @@
+/* The style given to the fulltabbing buttons. */
+.fulltab-overlay {
+    position: absolute;
+    width: 5em;
+    height: 5em;
+    top: 1em;
+    right: 1em;
+    background: red;
+}
+
+/* The style of video when it's fulltabbed. */
+.fulltabbed {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}

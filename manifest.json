@@ -1,0 +1,13 @@
+{
+    "name": "Fulltab",
+    "description": "This browser extensions allows the user to make a video fill the space of the entire tab view.",
+    "homepage_url": "https://github.com/cfpi-fpsi/Fulltab",
+    "version": "0.2",
+
+    "manifest_version": 2,
+    "content_scripts": [{
+	"matches": [ "<all_urls>" ],
+	"js": [ "content.js" ],
+	"css": [ "content.css" ]
+    }]
+}
