@@ -4,7 +4,7 @@ function becomeParent (node, wrapper) {
     wrapper.appendChild (node);
 }
 
-function createOverlay (parent) {
+function addOverlay (parent) {
     let overlay = document.createElement ("div");
     overlay.classList.add ("fulltab-overlay");
     overlay.innerText = "T";
@@ -15,23 +15,21 @@ function createOverlay (parent) {
     // because the browser will cry.
     overlay.addEventListener ("click", function () {
 	overlay.parentNode.classList.toggle ("fulltabbed");
+	overlay.parentNode.getElementsByTagName ("video")[0].classList.toggle ("fulltabbed");
 	document.body.classList.toggle ("fulltabbed-body");
     });
-    // TODO: if an element is fulltabbed, disable the overflow in the
-    // body element.
+    
     parent.appendChild (overlay);    
 }
 
 // We find all video elements.
-let videoElements = new Array;
-for (element of document.getElementsByTagName ("video")) {
-    videoElements.push (element);
-}
+let videoElements = document.getElementsByTagName ("video");
 
 for (element of videoElements) {
+    console.log ("[Fulltab] Found video element with ID: `" + element.id + "'. Creating container and overlay.");
+    
     let container = document.createElement ("div");
-    container.classList.add ("fulltab-container")
+    container.classList.add ("fulltab-container");
+    addOverlay (container);
     becomeParent (element, container);
-
-    createOverlay (container);
 }
